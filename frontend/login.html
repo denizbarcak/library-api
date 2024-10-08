@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="loginStyle.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <!-- Kullanıcı listesini görmek için bağlantı -->
+
+    <label for="useremail">Email:</label>
+    <input type="email" id="useremail" placeholder="Enter email" />
+
+    <label for="userpassword">Password:</label>
+    <input type="password" id="userpassword" placeholder="Enter password" />
+
+    <button onclick="loginUser()">Login</button>
+    <p id="message"></p>
+    <button>
+      <a href="/creatUser.html" class="link-style">Kullanıcı oluşturmak için</a>
+    </button>
+
+    <script>
+      const API_URL = "http://localhost:3000/login"; // Backend login rotası
+
+      function loginUser() {
+        const email = document.getElementById("useremail").value;
+        const password = document.getElementById("userpassword").value;
+
+        fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              document.getElementById("message").innerText = "Login successful";
+            } else {
+              document.getElementById("message").innerText =
+                "Invalid email or password";
+            }
+          })
+          .catch((error) => {
+            document.getElementById("message").innerText =
+              "Error during login.";
+            console.error(error);
+          });
+      }
+    </script>
+  </body>
+</html>

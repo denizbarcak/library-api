@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+input,
+button {
+  margin-top: 5px;
+  display: block;
+}
+button {
+  padding: 10px;
+  background-color: green;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  margin-top: 10px;
+}
+.link-style {
+  text-decoration: none;
+  color: blue;
+}
